@@ -1,13 +1,17 @@
 {
-  "name": "callback-switch",
+  "name": "switcheroo",
   "version": "1.0.0",
   "description": "Get rid of long ifs and switch statments",
-  "main": "callback-switch.js",
+  "main": "Switcheroo.js",
   "author": "JoniBR",
   "license": "MIT",
   "private": false,
   "devDependencies": {
-    "jest": "^23.6.0"
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.6.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^23.6.0",
+    "regenerator-runtime": "^0.12.1"
   },
   "scripts": {
     "test": "jest"
