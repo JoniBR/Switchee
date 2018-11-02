@@ -1,6 +1,9 @@
 "use strict";
 
-const isEqual = (val, params, isArray) => {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var isEqual = function isEqual(val, params, isArray) {
   if (isArray) {
     if (!params.length) {
       throw new Error("params array should contain at least 1 item");
@@ -12,4 +15,4 @@ const isEqual = (val, params, isArray) => {
   }
 };
 
-export default isEqual;
+exports.default = isEqual;

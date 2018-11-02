@@ -7,7 +7,7 @@ import matchers from "./matchers/matcherTypes";
 /**
  * case object -
  * {
- * matcher: string,
+ * matcher: string
  * params : array
  * action: function
  * useVal : boolean
@@ -27,7 +27,7 @@ const switcheroo = (cases, defaultAction) => {
       const op = c["op"];
       const params = c["params"];
       const isArray = Array.isArray(params);
-      return matcher(switchVal, params, op, isArray);
+      return matcher(switchVal, params, isArray, op);
     });
     let actionsResults = [];
     for (let c of filteredCases) {

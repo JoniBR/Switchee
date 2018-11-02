@@ -37,7 +37,7 @@ const checkMinimunTwoParams = nums => {
   }
 };
 
-const inRange = (val, params, op, isArray) => {
+const inRange = (val, params, isArray, op) => {
   if (op in ops) {
     return ops[op](val, params, isArray);
   } else {

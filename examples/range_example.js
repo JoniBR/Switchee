@@ -16,7 +16,7 @@ const switcheroo = $switch([
     op: "smaller-equals",
     useVal: true,
     action: infant => ageGroups.infants.push(infant),
-    useProperty: "age"
+    useProperty: "age" // uses the properety provided for to match the case
   },
   {
     matcher: "inRange",
