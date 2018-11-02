@@ -1,4 +1,4 @@
-import $switch from "../src/index.js";
+import $switch from "switchee";
 
 // lets sort people into groups by age
 const ageGroups = {
@@ -9,7 +9,7 @@ const ageGroups = {
   oldTimers: [],
   epics: []
 };
-const switcheroo = $switch([
+const switchee = $switch([
   {
     matcher: "inRange",
     params: 4,
@@ -70,5 +70,5 @@ const people = [
   { name: "Pablo", age: 120 }
 ];
 
-people.forEach(person => switcheroo(person));
+people.forEach(person => switchee(person));
 console.log(ageGroups);

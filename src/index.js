@@ -17,7 +17,7 @@ import matchers from "./matchers/matcherTypes";
  * }
  */
 
-const switcheroo = (cases, defaultAction) => {
+const switchee = (cases, defaultAction) => {
   validateCases(cases);
 
   return val => {
@@ -60,4 +60,4 @@ const switcheroo = (cases, defaultAction) => {
   };
 };
 
-export default switcheroo;
+export default switchee;

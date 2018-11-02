@@ -1,62 +1,67 @@
+# Switchee
 
-
-# Swithceroo 
 Powerful alternative to JavaScript's vanilla switch statement.
-Lets you create different cases that will match on one of this ***matchers:***
+Lets you create different cases that will match on one of this **_matchers:_**
 
- - [isEqual](#basic-usage)
- - [inRange](#inrange )
- - [isType](#istype)
- 
-Checkout the  [examples](./examples/) directory for a working examples.
+- [isEqual](#basic-usage)
+- [inRange](#inrange)
+- [isType](#istype)
+
+Checkout the [examples](./examples/) directory for a working examples.
+
 ## Install
-    npm install switcheroo
+
+    npm install switchee
+
 ## Basic Usage
+
 ```javascript
-import $switch from 'switcheroo';
+import $switch from "switchee";
 
 /**
 $switch(cases :Array *required , defaultAction : object | function)
 $switch expects an array of case object,
 and can use a default action that will be called when there is no match
 **/
-const switcheroo = $switch(
-    [{
-            matcher: "isEqual",
-            params: ["hello", "hey", "yo"], // will call action if one of the params is equal to switch input
-            action: () => console.log("Recived a greeting!")
-        },
-        {
-            matcher: "isEqual",
-            params: "goodbye", // can also recieve only one value to match
-            action: () => console.log("farwell"),
-            break: true // will break and not look for any more matches
-        },
-        {
-            matcher: "isEqual",
-            params: "goodbye",
-            action: () => console.log("arrivederci")
-        },
-        {
-            matcher: "isEqual",
-            params: ["don't you repeat me!"],
-            useVal: true, // when useVal is true action is called with the value matched
-            action: val => console.log(val)
-        }
-    ],
-    () => console.log("No match!?!") // defaultAction will be called when there is no match
+const switchee = $switch(
+  [
+    {
+      matcher: "isEqual",
+      params: ["hello", "hey", "yo"], // will call action if one of the params is equal to switch input
+      action: () => console.log("Recived a greeting!")
+    },
+    {
+      matcher: "isEqual",
+      params: "goodbye", // can also recieve only one value to match
+      action: () => console.log("farwell"),
+      break: true // will break and not look for any more matches
+    },
+    {
+      matcher: "isEqual",
+      params: "goodbye",
+      action: () => console.log("arrivederci")
+    },
+    {
+      matcher: "isEqual",
+      params: ["don't you repeat me!"],
+      useVal: true, // when useVal is true action is called with the value matched
+      action: val => console.log(val)
+    }
+  ],
+  () => console.log("No match!?!") // defaultAction will be called when there is no match
 );
 
 const words = [
-    "hello",
-    "hey",
-    "lets try this",
-    "don't you repeat me!",
-    "goodbye"
+  "hello",
+  "hey",
+  "lets try this",
+  "don't you repeat me!",
+  "goodbye"
 ];
 
-words.forEach(word => switcheroo(word));
+words.forEach(word => switchee(word));
 ```
+
 ```
 output:
 Recived a greeting!
@@ -64,10 +69,10 @@ Recived a greeting!
 No match!?!
 don't you repeat me!
 farwell
-
 ```
 
 ## The case object
+
 ```javascript
   {
   matcher: string , // *required - the type of matcher to be used in this case
@@ -75,28 +80,33 @@ farwell
   action: function // *required - the function that will be called in the event of a match
   useVal : boolean // when true action is called using the switch argument as an argument
   break: boolean // when true if this case is matched , it will be that last one checked
-  op: string // used in case mathcers have multiple operations  
-  useProperty : string // when provided the matcher will use the switch argument at the property 
+  op: string // used in case mathcers have multiple operations
+  useProperty : string // when provided the matcher will use the switch argument at the property
   }
 ```
+
 ## Other matchers
 
- ### inRange 
- Will match case if number is in given range
- uses the following ops:
- ```
- 'between'- params[0] < val < params[1]
- 'between-inclusive'-params[0] <= val <= params[1] 
- 'between-left-inclusive-params[0] <= val < params[1]
- 'between-right-inclusive'-params[0] < val <= params[1]
- 'bigger'-params[0] < val
- 'bigger-equals'- params[0] <= val
- 'smaller'- params[0] > val
+### inRange
+
+Will match case if number is in given range
+uses the following ops:
+
+```
+'between'- params[0] < val < params[1]
+'between-inclusive'-params[0] <= val <= params[1]
+'between-left-inclusive-params[0] <= val < params[1]
+'between-right-inclusive'-params[0] < val <= params[1]
+'bigger'-params[0] < val
+'bigger-equals'- params[0] <= val
+'smaller'- params[0] > val
 'smaller-equals'-params[0] => val
- ```
- For example , lets sort people to groups by age :
-   ```javascript
-   import $switch from "switcheroo";
+```
+
+For example , lets sort people to groups by age :
+
+```javascript
+import $switch from "switchee";
 
 // lets sort people into groups by age
 const ageGroups = {
@@ -107,7 +117,7 @@ const ageGroups = {
   oldTimers: [],
   epics: []
 };
-const switcheroo = $switch([
+const switchee = $switch([
   {
     matcher: "inRange",
     params: 4,
@@ -168,14 +178,13 @@ const people = [
   { name: "Pablo", age: 120 }
 ];
 
-people.forEach(person => switcheroo(person));
+people.forEach(person => switchee(person));
 console.log(ageGroups);
-   ```
-   
+```
 
-   ```
-   output : 
-   { infants: [ { name:  'Alon', age:  4 } ],
+```
+output :
+{ infants: [ { name:  'Alon', age:  4 } ],
 
 kids: [ { name:  'Nava', age:  12 } ],
 
@@ -192,13 +201,15 @@ adults:
 oldTimers: [ { name:  'Billi', age:  72 } ],
 
 epics: [ { name:  'Pablo', age:  120 } ] }
-   ```
+```
 
- ### isType
+### isType
+
 will match if type the of switch argument equals one of the params provided,
 will also match on ES6 classes :
+
 ```javascript
-import $switch from "switcheroo";
+import $switch from "switchee";
 
 class Test {
   test() {
@@ -206,7 +217,7 @@ class Test {
   }
 }
 
-const switcheroo = $switch([
+const switchee = $switch([
   {
     matcher: "isType",
     params: "number",
@@ -229,13 +240,7 @@ const switcheroo = $switch([
 
 const things = [1, 2, "Trump", new Test()];
 
-things.forEach(thing => switcheroo(thing));
-
+things.forEach(thing => switchee(thing));
 ```
 
-
-   
-
-   
-
- > Written with [StackEdit](https://stackedit.io/).
+> Written with [StackEdit](https://stackedit.io/).

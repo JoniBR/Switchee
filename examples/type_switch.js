@@ -1,4 +1,4 @@
-import $switch from "../dist";
+import $switch from "swithceroo";
 
 class Test {
   test() {

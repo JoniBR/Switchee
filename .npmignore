@@ -5,3 +5,5 @@ examples
 .gitignore
 test
 node_modules
+yarn.lock
+

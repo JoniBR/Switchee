@@ -1,4 +1,4 @@
-import $switch from '../src/index.js';
+import $switch from 'switchee';
 
 /**
  * basic case - same as a regualr switch,
@@ -6,7 +6,7 @@ import $switch from '../src/index.js';
  * in each case.
  */
 
-const switcheroo = $switch(
+const switchee = $switch(
     [{
             matcher: "isEqual",
             params: ["hello", "hey", "yo"], // will call action if one of the params is equal to switch input
@@ -41,4 +41,4 @@ const words = [
     "goodbye"
 ];
 
-words.forEach(word => switcheroo(word));
+words.forEach(word => switchee(word));
